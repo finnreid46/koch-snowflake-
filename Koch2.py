@@ -3,15 +3,15 @@ import matplotlib.pyplot as plt
 
 def expand(M):
     Z = np.zeros_like(M)
-    return np.block([[Z, M, Z],                         #try changing the positions of M and Z for new patterns.
-                     [Z, Z, Z],
-                     [M, Z, M]])
+    return np.block([[Z, M, M],                         #try changing the positions of M and Z for new patterns.
+                     [M, Z, M],
+                     [M, M, Z]])
 
-n = np.array([[0, 1, 0],
-              [0, 0, 0],                                 # for recurssion make sure the 1's corrospond to the M's and 0's to Z's.
-              [1, 0, 1]])
+n = np.array([[0, 1, 1],
+              [1, 0, 1],                                 # for recurssion make sure the 1's corrospond to the M's and 0's to Z's.
+              [1, 1, 0]])
 
-for _ in range(0):                                         #Keep small to avoid problems.
+for _ in range(3):                                         #Keep small to avoid problems. program is not efficient. 
     n = expand(n)
 
 points = set(zip(*np.where(n == 1)))            #
